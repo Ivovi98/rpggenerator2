@@ -29,6 +29,7 @@ CREATE TABLE `abilita` (
   `versione` int DEFAULT NULL,
   `dataCreazione` datetime DEFAULT NULL,
   `dataUltimaModifica` datetime DEFAULT NULL,
+  `Classe_idclasse` int NOT NULL,
   PRIMARY KEY (`idabilita`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -55,6 +56,7 @@ CREATE TABLE `categoria` (
   `versione` int DEFAULT NULL,
   `dataUltimaModifica` datetime DEFAULT NULL,
   `dataCreazione` datetime DEFAULT NULL,
+  `Descrizione_iddescrizione` int NOT NULL,
   PRIMARY KEY (`idcategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -107,6 +109,7 @@ CREATE TABLE `descrizione` (
   `dataCreazione` datetime DEFAULT NULL,
   `dataUltimaModifica` datetime DEFAULT NULL,
   `descrizione` varchar(45) DEFAULT NULL,
+  `Abilita_idabilita` int NOT NULL,
   PRIMARY KEY (`iddescrizione`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -138,6 +141,7 @@ CREATE TABLE `personaggio` (
   `intellijPersonaggio` int DEFAULT NULL,
   `forzaPersonaggio` int DEFAULT NULL,
   `salutePersonaggio` int DEFAULT NULL,
+  `Classe_idclasse` int NOT NULL,
   PRIMARY KEY (`idpersonaggio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -160,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-15 13:14:49
+-- Dump completed on 2023-03-15 15:56:12
