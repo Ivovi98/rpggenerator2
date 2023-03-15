@@ -23,7 +23,7 @@ public class Personaggio {
     private Long idpersonaggio;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "classe_idclasse")
+    @JoinColumn(name = "idclasse")
     private Classe idclasse;
 
     @Column
