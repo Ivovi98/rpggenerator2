@@ -30,7 +30,9 @@ CREATE TABLE `abilita` (
   `dataCreazione` datetime DEFAULT NULL,
   `dataUltimaModifica` datetime DEFAULT NULL,
   `Classe_idclasse` int NOT NULL,
-  PRIMARY KEY (`idabilita`)
+  PRIMARY KEY (`idabilita`),
+  KEY `idclasse_idx` (`Classe_idclasse`),
+  CONSTRAINT `idclasse` FOREIGN KEY (`Classe_idclasse`) REFERENCES `classe` (`idclasse`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,7 +144,9 @@ CREATE TABLE `personaggio` (
   `forzaPersonaggio` int DEFAULT NULL,
   `salutePersonaggio` int DEFAULT NULL,
   `Classe_idclasse` int NOT NULL,
-  PRIMARY KEY (`idpersonaggio`)
+  PRIMARY KEY (`idpersonaggio`),
+  KEY `Classe_idclasse_idx` (`Classe_idclasse`),
+  CONSTRAINT `Classe_idclasse` FOREIGN KEY (`Classe_idclasse`) REFERENCES `classe` (`idclasse`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -164,4 +168,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-15 15:56:12
+-- Dump completed on 2023-03-15 16:14:11
