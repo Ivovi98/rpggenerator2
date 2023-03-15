@@ -20,7 +20,7 @@ public class Abilita {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private String idabilita;
+    private Long idabilita;
 
     @Column
     private String nomeAttributiAbilita;

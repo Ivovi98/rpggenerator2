@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 public class Categoria {
    @Id
    @Column(nullable = false)
-   private String idcategoria;
+   private Long idcategoria;
 
    @Column
    private String nomeAttributiCategoria;

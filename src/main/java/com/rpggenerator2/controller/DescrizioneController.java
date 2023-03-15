@@ -37,9 +37,7 @@ public class DescrizioneController {
         if (existingDescrizione.isPresent()) {
             Descrizione descrizioneToUpdate = existingDescrizione.get();
             descrizioneToUpdate.setDescrizione(descrizione.getDescrizione());
-            descrizioneToUpdate.setDescrizioneClasse(descrizione.getDescrizioneClasse());
-            descrizioneToUpdate.setNomeAttributiAbilita(descrizione.getNomeAttributiAbilita());
-            descrizioneToUpdate.setCategoriaDescrizione(descrizione.getCategoriaDescrizione());
+            descrizioneToUpdate.setDescrizione(descrizione.getDescrizione());
             descrizioneToUpdate.setDataUltimaModifica(new Timestamp(System.currentTimeMillis()));
             Descrizione updatedDescrizione = descrizioneService.save(descrizioneToUpdate);
             return new ResponseEntity<>(updatedDescrizione, HttpStatus.OK);

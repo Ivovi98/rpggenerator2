@@ -19,7 +19,7 @@ import java.sql.Timestamp;
 public class Classe {
     @Id
     @Column(nullable = false)
-    private String idclasse;
+    private Long idclasse;
 
     @Column
     private String nomeAttributiClasse;
@@ -36,6 +36,6 @@ public class Classe {
     @Column
     private int versione;
 
-    public void setId(String id) {
+    public void setId(Long id) {
     }
 }

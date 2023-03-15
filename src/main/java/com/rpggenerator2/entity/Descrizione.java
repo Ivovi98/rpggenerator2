@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 public class Descrizione {
     @Id
     @Column(nullable = false)
-    private String iddescrizione;
+    private Long iddescrizione;
 
     @Column
     private String descrizione;
