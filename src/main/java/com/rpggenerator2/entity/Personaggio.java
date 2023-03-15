@@ -1,4 +1,4 @@
-package com.rpg.rpgGenerator.entity;
+package com.rpggenerator2.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,4 +1,4 @@
-package com.rpg.rpgGenerator.service;
+package  com.rpggenerator2.service;
 
 import com.rpg.rpgGenerator.entity.Descrizione;
 import com.rpg.rpgGenerator.repository.DescrizioneRepository;

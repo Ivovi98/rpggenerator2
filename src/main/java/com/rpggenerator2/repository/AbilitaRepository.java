@@ -1,4 +1,4 @@
-package com.rpg.rpgGenerator.repository;
+package com.rpggenerator2.repository;
 
 import com.rpg.rpgGenerator.entity.Abilita;
 import org.springframework.data.jpa.repository.JpaRepository;
