@@ -12,13 +12,15 @@ public class DescrizioneService {
     @Autowired
     private DescrizioneRepository descrizioneRepository;
 
+    /*
     public Descrizione findByCategoriaDescrizione(String categoriaDescrizione) {
         return descrizioneRepository.findByCategoriaDescrizione(categoriaDescrizione);
     }
 
-    /*public List<Descrizione> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
+    public List<Descrizione> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
         return descrizioneRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
-    }*/
+    }
+    */
 
     public Optional<Descrizione> findById(Long id) {
         return descrizioneRepository.findById(id);

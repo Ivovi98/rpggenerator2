@@ -12,13 +12,15 @@ public class PersonaggioService {
     @Autowired
     private PersonaggioRepository personaggioRepository;
 
+    /*
     public Personaggio findByNomePersonaggio(String nomePersonaggio) {
         return personaggioRepository.findByNomePersonaggio(nomePersonaggio);
     }
 
-    /*public List<Personaggio> findAllByClassePersonaggio(String classePersonaggio) {
+    public List<Personaggio> findAllByClassePersonaggio(String classePersonaggio) {
         return personaggioRepository.findAllByClassePersonaggio(classePersonaggio);
-    }*/
+    }
+    */
 
     public Optional<Personaggio> findById(Long id) {
         return personaggioRepository.findById(id);
