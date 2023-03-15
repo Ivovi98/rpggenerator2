@@ -25,7 +25,7 @@ public class DescrizioneController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<?> createDescrizione(@RequestBody Descrizione descrizione) {
         Descrizione createdDescrizione = descrizioneService.insertDescrizione(descrizione);
         return new ResponseEntity<>(createdDescrizione, HttpStatus.CREATED);

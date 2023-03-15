@@ -32,7 +32,7 @@ CREATE TABLE `abilita` (
   `Classe_idclasse` int NOT NULL,
   PRIMARY KEY (`idabilita`),
   KEY `idclasse_idx` (`Classe_idclasse`),
-  CONSTRAINT `idclasse` FOREIGN KEY (`Classe_idclasse`) REFERENCES `classe` (`idclasse`)
+  CONSTRAINT `Classe_idclasseAbilita` FOREIGN KEY (`Classe_idclasse`) REFERENCES `classe` (`idclasse`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -59,7 +59,9 @@ CREATE TABLE `categoria` (
   `dataUltimaModifica` datetime DEFAULT NULL,
   `dataCreazione` datetime DEFAULT NULL,
   `Descrizione_iddescrizione` int NOT NULL,
-  PRIMARY KEY (`idcategoria`)
+  PRIMARY KEY (`idcategoria`),
+  KEY `Descrizione_iddescrizione_idx` (`Descrizione_iddescrizione`),
+  CONSTRAINT `Descrizione_iddescrizione` FOREIGN KEY (`Descrizione_iddescrizione`) REFERENCES `descrizione` (`iddescrizione`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -112,7 +114,9 @@ CREATE TABLE `descrizione` (
   `dataUltimaModifica` datetime DEFAULT NULL,
   `descrizione` varchar(45) DEFAULT NULL,
   `Abilita_idabilita` int NOT NULL,
-  PRIMARY KEY (`iddescrizione`)
+  PRIMARY KEY (`iddescrizione`),
+  KEY `Abilita_idabilita_idx` (`Abilita_idabilita`),
+  CONSTRAINT `Abilita_idabilita` FOREIGN KEY (`Abilita_idabilita`) REFERENCES `abilita` (`idabilita`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -168,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-15 16:14:11
+-- Dump completed on 2023-03-15 16:52:51
