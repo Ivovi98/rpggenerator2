@@ -12,12 +12,6 @@ public class ClasseService {
     @Autowired
     private ClasseRepository classeRepository;
 
-    /*
-    public Classe findByNomeClasse(String nomeClasse) {
-        return classeRepository.findByNomeClasse(nomeClasse);
-    }
-    */
-
     public Optional<Classe> findById(Long id) {
         return classeRepository.findById(id);
     }
@@ -34,4 +28,11 @@ public class ClasseService {
     public void delete(Classe c) {
         classeRepository.delete(c);
     }
+
+
+    /*
+    public Classe findByNomeClasse(String nomeClasse) {
+        return classeRepository.findByNomeClasse(nomeClasse);
+    }
+    */
 }

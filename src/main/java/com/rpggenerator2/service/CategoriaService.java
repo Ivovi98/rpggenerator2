@@ -13,12 +13,6 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    /*
-    public List<String> findAllNames() {
-        return categoriaRepository.findAllNames();
-    }
-    */
-
     public Optional<Categoria> findById(Long id) {
         return categoriaRepository.findById(id);
     }

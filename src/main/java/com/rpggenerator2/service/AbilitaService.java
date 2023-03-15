@@ -14,20 +14,6 @@ public class AbilitaService {
     @Autowired
     private AbilitaRepository abilitaRepository;
 
-    public List<Abilita> findAll() {
-        return abilitaRepository.findAll();
-    }
-
-    /*
-    public List<Abilita> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
-        return abilitaRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
-    }
-
-    public Abilita findByNomeAbilita(String nomeAbilita) {
-        return abilitaRepository.findByNomeAbilita(nomeAbilita);
-    }
-    */
-
     public Optional<Abilita> findById(Long id) {
         return abilitaRepository.findById(id);
     }
@@ -44,4 +30,14 @@ public class AbilitaService {
     public void delete(Abilita a) {
         abilitaRepository.delete(a);
     }
+
+        /*
+    public List<Abilita> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita) {
+        return abilitaRepository.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
+    }
+
+    public Abilita findByNomeAbilita(String nomeAbilita) {
+        return abilitaRepository.findByNomeAbilita(nomeAbilita);
+    }
+    */
 }
