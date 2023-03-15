@@ -23,16 +23,16 @@ DROP TABLE IF EXISTS `abilita`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `abilita` (
-  `idabilita` int NOT NULL AUTO_INCREMENT,
-  `nomeAttributiAbilita` varchar(45) DEFAULT NULL,
-  `nomeAbilita` varchar(45) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome_attributi_abilita` varchar(45) DEFAULT NULL,
+  `nome_abilita` varchar(45) DEFAULT NULL,
   `versione` int DEFAULT NULL,
-  `dataCreazione` datetime DEFAULT NULL,
-  `dataUltimaModifica` datetime DEFAULT NULL,
-  `Classe_idclasse` int NOT NULL,
-  PRIMARY KEY (`idabilita`),
-  KEY `idclasse_idx` (`Classe_idclasse`),
-  CONSTRAINT `Classe_idclasseAbilita` FOREIGN KEY (`Classe_idclasse`) REFERENCES `classe` (`idclasse`)
+  `data_creazione` datetime DEFAULT NULL,
+  `data_ultima_modifica` datetime DEFAULT NULL,
+  `id_classe` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idclasse_idx` (`id_classe`),
+  CONSTRAINT `Classe_idclasseAbilita` FOREIGN KEY (`id_classe`) REFERENCES `classe` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,15 +53,15 @@ DROP TABLE IF EXISTS `categoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoria` (
-  `idcategoria` int NOT NULL AUTO_INCREMENT,
-  `nomeAttributiCategoria` varchar(45) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome_attributi_categoria` varchar(45) DEFAULT NULL,
   `versione` int DEFAULT NULL,
-  `dataUltimaModifica` datetime DEFAULT NULL,
-  `dataCreazione` datetime DEFAULT NULL,
-  `Descrizione_iddescrizione` int NOT NULL,
-  PRIMARY KEY (`idcategoria`),
-  KEY `Descrizione_iddescrizione_idx` (`Descrizione_iddescrizione`),
-  CONSTRAINT `Descrizione_iddescrizione` FOREIGN KEY (`Descrizione_iddescrizione`) REFERENCES `descrizione` (`iddescrizione`)
+  `data_ultima_modifica` datetime DEFAULT NULL,
+  `data_creazione` datetime DEFAULT NULL,
+  `id_descrizione` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Descrizione_iddescrizione_idx` (`id_descrizione`),
+  CONSTRAINT `Descrizione_iddescrizione` FOREIGN KEY (`id_descrizione`) REFERENCES `descrizione` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -82,12 +82,12 @@ DROP TABLE IF EXISTS `classe`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `classe` (
-  `idclasse` int NOT NULL AUTO_INCREMENT,
-  `nomeAttributiClasse` varchar(45) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome_attributi_classe` varchar(45) DEFAULT NULL,
   `versione` int DEFAULT NULL,
-  `dataCreazione` datetime DEFAULT NULL,
-  `dataUltimaModifica` datetime DEFAULT NULL,
-  PRIMARY KEY (`idclasse`)
+  `data_creazione` datetime DEFAULT NULL,
+  `data_ultima_modifica` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -108,15 +108,15 @@ DROP TABLE IF EXISTS `descrizione`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `descrizione` (
-  `iddescrizione` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `versione` int DEFAULT NULL,
-  `dataCreazione` datetime DEFAULT NULL,
-  `dataUltimaModifica` datetime DEFAULT NULL,
+  `data_creazione` datetime DEFAULT NULL,
+  `data_ultima_modifica` datetime DEFAULT NULL,
   `descrizione` varchar(45) DEFAULT NULL,
-  `Abilita_idabilita` int NOT NULL,
-  PRIMARY KEY (`iddescrizione`),
-  KEY `Abilita_idabilita_idx` (`Abilita_idabilita`),
-  CONSTRAINT `Abilita_idabilita` FOREIGN KEY (`Abilita_idabilita`) REFERENCES `abilita` (`idabilita`)
+  `id_abilita` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Abilita_idabilita_idx` (`id_abilita`),
+  CONSTRAINT `id_abilita` FOREIGN KEY (`id_abilita`) REFERENCES `abilita` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,20 +137,20 @@ DROP TABLE IF EXISTS `personaggio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `personaggio` (
-  `idpersonaggio` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `versione` int DEFAULT NULL,
-  `dataCreazione` datetime DEFAULT NULL,
-  `dataUltimaModifica` datetime DEFAULT NULL,
-  `nomePersonaggio` varchar(45) DEFAULT NULL,
-  `classePersonaggio` varchar(45) DEFAULT NULL,
-  `livelloPersonaggio` int DEFAULT NULL,
-  `intellijPersonaggio` int DEFAULT NULL,
-  `forzaPersonaggio` int DEFAULT NULL,
-  `salutePersonaggio` int DEFAULT NULL,
-  `Classe_idclasse` int NOT NULL,
-  PRIMARY KEY (`idpersonaggio`),
-  KEY `Classe_idclasse_idx` (`Classe_idclasse`),
-  CONSTRAINT `Classe_idclasse` FOREIGN KEY (`Classe_idclasse`) REFERENCES `classe` (`idclasse`)
+  `data_creazione` datetime DEFAULT NULL,
+  `data_ultima_modifica` datetime DEFAULT NULL,
+  `nome` varchar(45) DEFAULT NULL,
+  `classe` varchar(45) DEFAULT NULL,
+  `livello` int DEFAULT NULL,
+  `intellij` int DEFAULT NULL,
+  `forza` int DEFAULT NULL,
+  `salute` int DEFAULT NULL,
+  `id_classe` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Classe_idclasse_idx` (`id_classe`),
+  CONSTRAINT `id_classe` FOREIGN KEY (`id_classe`) REFERENCES `classe` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
