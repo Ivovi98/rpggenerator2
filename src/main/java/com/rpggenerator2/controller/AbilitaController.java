@@ -15,9 +15,9 @@ public class AbilitaController {
     @Autowired
     private AbilitaService abilitaService;
 
-    @GetMapping("/{nomeAbilita}") //READ GET BY ID
-    public ResponseEntity<Abilita> getAbilitaByNomeAbilita(@PathVariable String nomeAbilita){
-        Optional<Abilita> existingAbilita = Optional.ofNullable(abilitaService.findByNomeAbilita(nomeAbilita));
+    /*@GetMapping("/{id}") //READ GET BY ID
+    public ResponseEntity<Abilita> getAbilitaById(@PathVariable Long id){
+        Optional<Abilita> existingAbilita = Optional.ofNullable(abilitaService.findByIdAbilita(id));
         try {
             if(existingAbilita.isPresent()){
                 return new ResponseEntity<>(existingAbilita.get(), HttpStatus.OK);
@@ -29,6 +29,15 @@ public class AbilitaController {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }*/
+    @GetMapping("/{id}")
+    public ResponseEntity<Abilita> findById(@PathVariable Long id) {
+        Optional<Abilita> abilita = abilitaService.findById(id);
+        if (abilita.isPresent()) {
+            return ResponseEntity.ok(abilita.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("")
@@ -37,8 +46,8 @@ public class AbilitaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Abilita> update(@PathVariable String id, @RequestBody Abilita abilita) {
-        Optional<Abilita> existingAbilita = Optional.ofNullable(abilitaService.findByNomeAbilita(id));
+    public ResponseEntity<Abilita> update(@PathVariable Long id, @RequestBody Abilita abilita) {
+        Optional<Abilita> existingAbilita = (abilitaService.findById(id));
         if (existingAbilita.isPresent()) {
             Abilita updatedAbilita = abilitaService.save(abilita);
             return ResponseEntity.ok(updatedAbilita);
@@ -48,8 +57,8 @@ public class AbilitaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id) {
-        Optional<Abilita> abilita = Optional.ofNullable(abilitaService.findByNomeAbilita(id));
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        Optional<Abilita> abilita = (abilitaService.findById(id));
         if (abilita.isPresent()) {
             abilitaService.delete(abilita.get());
             return ResponseEntity.noContent().build();
