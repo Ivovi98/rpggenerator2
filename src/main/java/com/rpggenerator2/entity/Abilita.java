@@ -29,7 +29,7 @@ public class Abilita {
     private String nomeAbilita;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idlasse")
+    @JoinColumn(name = "idclasse")
     private Classe idClasse;
 
     @CreatedDate
