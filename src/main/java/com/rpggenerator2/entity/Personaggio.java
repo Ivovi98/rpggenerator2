@@ -20,29 +20,29 @@ public class Personaggio {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private Long idpersonaggio;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idclasse")
-    private Classe idclasse;
+    @JoinColumn(name = "id_classe")
+    private Classe idClasse;
 
     @Column
-    private String nomePersonaggio;
+    private String nome;
 
     @Column
-    private String classePersonaggio;
+    private String classe;
 
     @Column
-    private int livelloPersonaggio;
+    private int livello;
 
     @Column
-    private int forzaPersonaggio;
+    private int forza;
 
     @Column
-    private int intellijPersonaggio;
+    private int intellij;
 
     @Column
-    private int salutePersonaggio;
+    private int salute;
 
     @CreatedDate
     @Column

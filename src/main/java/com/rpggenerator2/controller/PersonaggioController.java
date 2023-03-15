@@ -52,7 +52,7 @@ public class PersonaggioController {
         try {
             if(existingPersonaggio.isPresent()){
                 Personaggio personaggio = existingPersonaggio.get();
-                personaggio.setNomePersonaggio(nomePersonaggio);
+                personaggio.setNome(nomePersonaggio);
                 personaggio.setDataUltimaModifica(new Timestamp(System.currentTimeMillis()));
                 personaggio.setVersione(personaggio.getVersione() + 1);
                 Personaggio updatedPersonaggio = personaggioService.save(personaggio);

@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DescrizioneRepository extends JpaRepository<Descrizione, Long> {
+
+    Optional <Descrizione> findByIdAbilita(Long idAbilita);
+
     /*
     @Query("SELECT d FROM Descrizione d WHERE d.categoriaDescrizione = :categoriaDescrizione")
     Descrizione findByCategoriaDescrizione(String categoriaDescrizione);

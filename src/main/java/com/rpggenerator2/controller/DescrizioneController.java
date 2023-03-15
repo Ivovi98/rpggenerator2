@@ -20,7 +20,7 @@ public class DescrizioneController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getDescrizioneById(@PathVariable Long id) {
-        Optional<Descrizione> descrizione = descrizioneService.findById(id);
+        Optional<Descrizione> descrizione = descrizioneService.findByIdAbilita(id);
         return descrizione.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -33,7 +33,7 @@ public class DescrizioneController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateDescrizione(@PathVariable Long id, @RequestBody Descrizione descrizione) {
-        Optional<Descrizione> existingDescrizione = descrizioneService.findById(id);
+        Optional<Descrizione> existingDescrizione = descrizioneService.findByIdAbilita(id);
         if (existingDescrizione.isPresent()) {
             Descrizione descrizioneToUpdate = existingDescrizione.get();
             descrizioneToUpdate.setDescrizione(descrizione.getDescrizione());
@@ -48,7 +48,7 @@ public class DescrizioneController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDescrizione(@PathVariable Long id) {
-        Optional<Descrizione> descrizioneToDelete = descrizioneService.findById(id);
+        Optional<Descrizione> descrizioneToDelete = descrizioneService.findByIdAbilita(id);
         if (descrizioneToDelete.isPresent()) {
             descrizioneService.delete(descrizioneToDelete.get());
             return new ResponseEntity<>(HttpStatus.OK);

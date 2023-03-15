@@ -17,24 +17,24 @@ import java.sql.Timestamp;
 public class Descrizione {
     @Id
     @Column(nullable = false)
-    private Long iddescrizione;
+    private Long id;
 
-    @Column
+    @Column(name = "descrizione")
     private String descrizione;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idabilita")
-    private Abilita idabilita;
+    @JoinColumn(name = "id_abilita")
+    private Abilita idAbilita;
 
     @CreatedDate
-    @Column
+    @Column(name = "data_creazione")
     private Timestamp dataCreazione;
 
     @LastModifiedDate
-    @Column
+    @Column(name = "data_ultima_modifica")
     private Timestamp dataUltimaModifica;
 
     @Version
-    @Column
+    @Column(name = "versione")
     private int versione;
 }

@@ -19,7 +19,7 @@ import java.sql.Timestamp;
 public class Classe {
     @Id
     @Column(nullable = false)
-    private Long idclasse;
+    private Long id;
 
     @Column
     private String nomeAttributiClasse;

@@ -17,15 +17,15 @@ import java.sql.Timestamp;
 public class Categoria {
    @Id
    @Column(nullable = false)
-   private Long idcategoria;
+   private Long id;
 
    @Column
    private String nomeAttributiCategoria;
 
 
    @OneToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "iddescrizione")
-   private Descrizione iddescrizione;
+   @JoinColumn(name = "id_descrizione")
+   private Descrizione idDescrizione;
 
    @CreatedDate
    @Column
@@ -39,12 +39,4 @@ public class Categoria {
    @Column
    private int versione;
 
-   public Object getNomeAttributiCategoria() {
-       Object o = null;
-       return o;
-   }
-
-   public void setNomeAttributiCategoria(Object nomeAttributiCategoria) {
-
-   }
 }

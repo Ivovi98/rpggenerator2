@@ -19,7 +19,7 @@ public class Abilita {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private Long idabilita;
+    private Long id;
 
     @Column
     private String nomeAttributiAbilita;
@@ -28,8 +28,8 @@ public class Abilita {
     private String nomeAbilita;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idclasse")
-    private Classe idclasse;
+    @JoinColumn(name = "id_classe")
+    private Classe idClasse;
 
     @CreatedDate
     @Column
