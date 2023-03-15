@@ -40,17 +40,18 @@ public class AbilitaController {
         }
     }
 
-    @PostMapping("")
+    @PostMapping
     public Abilita create(@RequestBody Abilita abilita) {
         return abilitaService.insertAbilita(abilita);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Abilita> update(@PathVariable Long id, @RequestBody Abilita abilita) {
+    public ResponseEntity<Abilita> updateAbilita(@PathVariable Long id, @RequestBody Abilita abilita) {
         Optional<Abilita> existingAbilita = (abilitaService.findById(id));
         if (existingAbilita.isPresent()) {
-            Abilita updatedAbilita = abilitaService.save(abilita);
-            return ResponseEntity.ok(updatedAbilita);
+            abilita.setNomeAttributiAbilita(existingAbilita.get().getNomeAttributiAbilita());
+            Abilita savedAbilita = abilitaService.save(abilita);
+            return ResponseEntity.ok(savedAbilita);
         } else {
             return ResponseEntity.notFound().build();
         }
