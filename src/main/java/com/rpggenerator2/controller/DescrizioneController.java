@@ -56,7 +56,7 @@ public class DescrizioneController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    /*
     @GetMapping("/categoria")
     public ResponseEntity<?> getDescrizioneByCategoria(@RequestParam("categoria") String categoria) {
         Descrizione descrizione = descrizioneService.findByCategoriaDescrizione(categoria);
@@ -64,11 +64,12 @@ public class DescrizioneController {
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    /*@GetMapping("/abilita")
+    @GetMapping("/abilita")
     public ResponseEntity<?> getDescrizioniByNomeAttributiAbilita(@RequestParam("abilita") String abilita) {
         List<Descrizione> descrizioni = descrizioneService.findAllByNomeAttributiAbilitaContaining(abilita);
         return descrizioni != null && !descrizioni.isEmpty() ?
                 new ResponseEntity<>(descrizioni, HttpStatus.OK) :
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }*/
+    }
+    */
 }

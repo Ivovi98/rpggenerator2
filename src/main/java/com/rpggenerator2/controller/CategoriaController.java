@@ -17,11 +17,6 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @GetMapping
-    public List<String> findAllNames() {
-        return categoriaService.findAllNames();
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Categoria> findById(@PathVariable Long id) {
         Optional<Categoria> categoria = categoriaService.findById(id);
@@ -60,4 +55,11 @@ public class CategoriaController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    /*
+    @GetMapping
+    public List<String> findAllNames() {
+        return categoriaService.findAllNames();
+    }
+    */
 }

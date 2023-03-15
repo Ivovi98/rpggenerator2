@@ -32,17 +32,6 @@ public class ClasseController {
         }
     }
 
-    /* METODO GET
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getClasse(@PathVariable String id) {
-        Optional<Classe> classe = classeService.findById(id);
-        if (classe.isPresent()) {
-            return new ResponseEntity<>(classe.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-     */
 
     @PostMapping
     public ResponseEntity<?> addClasse(@RequestBody Classe classe) {
@@ -72,7 +61,7 @@ public class ClasseController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+    /*
     @GetMapping("/search")
     public ResponseEntity<?> searchClasse(@RequestParam String nomeClasse) {
         Classe classe = classeService.findByNomeClasse(nomeClasse);
@@ -82,4 +71,16 @@ public class ClasseController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    METODO GET GENERALE
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getClasse(@PathVariable String id) {
+        Optional<Classe> classe = classeService.findById(id);
+        if (classe.isPresent()) {
+            return new ResponseEntity<>(classe.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+     */
 }

@@ -15,13 +15,6 @@ public class AbilitaController {
     @Autowired
     private AbilitaService abilitaService;
 
-    /*
-    @GetMapping("")
-    public List<Abilita> findAll() {
-        return abilitaService.findAll();
-    }
-     */
-
     @GetMapping("/{nomeAbilita}") //READ GET BY ID
     public ResponseEntity<Abilita> getAbilitaByNomeAbilita(@PathVariable String nomeAbilita){
         Optional<Abilita> existingAbilita = Optional.ofNullable(abilitaService.findByNomeAbilita(nomeAbilita));
@@ -37,25 +30,6 @@ public class AbilitaController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    /* METODO GET READ
-    @GetMapping("/{id}")
-    public ResponseEntity<Abilita> findById(@PathVariable String id) {
-        Optional<Abilita> abilita = abilitaService.findById(id);
-        return abilita.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/cerca-per-nome-abilita/{nomeAbilita}")
-    public ResponseEntity<Abilita> findByNomeAbilita(@PathVariable String nomeAbilita) {
-        Abilita abilita = abilitaService.findByNomeAbilita(nomeAbilita);
-        return abilita != null ? ResponseEntity.ok(abilita) : ResponseEntity.notFound().build();
-    }
-
-    @GetMapping("/cerca-per-nome-attributi-abilita/{nomeAttributiAbilita}")
-    public List<Abilita> findAllByNomeAttributiAbilitaContaining(@PathVariable String nomeAttributiAbilita) {
-        return abilitaService.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
-    }
-    */
 
     @PostMapping("")
     public Abilita create(@RequestBody Abilita abilita) {
@@ -83,4 +57,28 @@ public class AbilitaController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    /* METODO GET READ
+    @GetMapping("/{id}")
+    public ResponseEntity<Abilita> findById(@PathVariable String id) {
+        Optional<Abilita> abilita = abilitaService.findById(id);
+        return abilita.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/cerca-per-nome-abilita/{nomeAbilita}")
+    public ResponseEntity<Abilita> findByNomeAbilita(@PathVariable String nomeAbilita) {
+        Abilita abilita = abilitaService.findByNomeAbilita(nomeAbilita);
+        return abilita != null ? ResponseEntity.ok(abilita) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/cerca-per-nome-attributi-abilita/{nomeAttributiAbilita}")
+    public List<Abilita> findAllByNomeAttributiAbilitaContaining(@PathVariable String nomeAttributiAbilita) {
+        return abilitaService.findAllByNomeAttributiAbilitaContaining(nomeAttributiAbilita);
+    }
+
+    @GetMapping("")
+    public List<Abilita> findAll() {
+        return abilitaService.findAll();
+    }
+    */
 }

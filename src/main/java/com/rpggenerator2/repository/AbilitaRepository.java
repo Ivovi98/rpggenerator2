@@ -9,8 +9,10 @@ import java.util.Optional;
 
 
 public interface AbilitaRepository extends JpaRepository<Abilita, Long> {
+    /*
     Abilita findByNomeAbilita(String nomeAbilita);
 
     @Query("SELECT a FROM Abilita a WHERE a.nomeAttributiAbilita LIKE %?1%")
     List<Abilita> findAllByNomeAttributiAbilitaContaining(String nomeAttributiAbilita);
+    */
 }
