@@ -49,6 +49,7 @@ public class AbilitaController {
     public ResponseEntity<Abilita> updateAbilita(@PathVariable Long id, @RequestBody Abilita abilita) {
         Optional<Abilita> existingAbilita = (abilitaService.findById(id));
         if (existingAbilita.isPresent()) {
+            abilita.setNomeAbilita(existingAbilita.get().getNomeAbilita());
             abilita.setNomeAttributiAbilita(existingAbilita.get().getNomeAttributiAbilita());
             Abilita savedAbilita = abilitaService.save(abilita);
             return ResponseEntity.ok(savedAbilita);
