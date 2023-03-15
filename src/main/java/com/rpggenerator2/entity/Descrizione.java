@@ -24,7 +24,7 @@ public class Descrizione {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_abilita")
-    private Abilita idAbilita;
+    private Abilita abilita;
 
     @CreatedDate
     @Column(name = "data_creazione")

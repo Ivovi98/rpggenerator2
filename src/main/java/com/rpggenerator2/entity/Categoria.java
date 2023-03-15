@@ -25,7 +25,7 @@ public class Categoria {
 
    @OneToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "id_descrizione")
-   private Descrizione idDescrizione;
+   private Descrizione descrizione;
 
    @CreatedDate
    @Column

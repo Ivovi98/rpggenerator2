@@ -24,13 +24,10 @@ public class Personaggio {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_classe")
-    private Classe idClasse;
+    private Classe classe;
 
     @Column
     private String nome;
-
-    @Column
-    private String classe;
 
     @Column
     private int livello;

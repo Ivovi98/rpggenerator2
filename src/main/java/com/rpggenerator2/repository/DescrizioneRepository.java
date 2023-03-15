@@ -8,7 +8,8 @@ import java.util.Optional;
 
 public interface DescrizioneRepository extends JpaRepository<Descrizione, Long> {
 
-    Optional <Descrizione> findByIdAbilita(Long idAbilita);
+    //@Query("SELECT d FROM Descrizione d WHERE d.Abilita.id = :idAbilita")
+    Optional <Descrizione> findByAbilitaId(Long idAbilita);
 
     /*
     @Query("SELECT d FROM Descrizione d WHERE d.categoriaDescrizione = :categoriaDescrizione")

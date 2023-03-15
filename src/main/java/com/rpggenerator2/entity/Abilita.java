@@ -29,7 +29,7 @@ public class Abilita {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_classe")
-    private Classe idClasse;
+    private Classe classe;
 
     @CreatedDate
     @Column

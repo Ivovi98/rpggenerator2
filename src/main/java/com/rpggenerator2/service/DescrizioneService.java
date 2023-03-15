@@ -13,7 +13,7 @@ public class DescrizioneService {
     private DescrizioneRepository descrizioneRepository;
 
     public Optional<Descrizione> findByIdAbilita(Long idabilita) {
-        return descrizioneRepository.findByIdAbilita(idabilita);
+        return descrizioneRepository.findByAbilitaId(idabilita);
     }
 
     public Descrizione insertDescrizione(Descrizione d) {
