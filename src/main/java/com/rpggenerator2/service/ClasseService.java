@@ -1,7 +1,7 @@
 package com.rpggenerator2.service;
 
-import com.rpg.rpgGenerator.entity.Classe;
-import com.rpg.rpgGenerator.repository.ClasseRepository;
+import com.rpggenerator2.entity.Classe;
+import com.rpggenerator2.repository.ClasseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
@@ -16,7 +16,7 @@ public class ClasseService {
         return classeRepository.findByNomeClasse(nomeClasse);
     }
 
-    public Optional<Classe> findById(String id) {
+    public Optional<Classe> findById(Long id) {
         return classeRepository.findById(id);
     }
 

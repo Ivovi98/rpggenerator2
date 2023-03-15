@@ -1,11 +1,10 @@
 package com.rpggenerator2.service;
 
-import com.rpg.rpgGenerator.entity.Abilita;
-import com.rpg.rpgGenerator.repository.AbilitaRepository;
+import com.rpggenerator2.entity.Abilita;
+import com.rpggenerator2.repository.AbilitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AbilitaService {

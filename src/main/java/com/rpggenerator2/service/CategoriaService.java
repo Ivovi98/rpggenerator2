@@ -1,10 +1,9 @@
 package  com.rpggenerator2.service;
 
-import com.rpg.rpgGenerator.entity.Categoria;
-import com.rpg.rpgGenerator.repository.CategoriaRepository;
+import com.rpggenerator2.entity.Categoria;
+import com.rpggenerator2.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +17,7 @@ public class CategoriaService {
         return categoriaRepository.findAllNames();
     }
 
-    public Optional<Categoria> findById(Enum id) {
+    public Optional<Categoria> findById(Long id) {
         return categoriaRepository.findById(id);
     }
 

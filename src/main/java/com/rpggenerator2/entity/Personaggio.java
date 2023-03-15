@@ -20,14 +20,17 @@ public class Personaggio {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private Long idPersonaggio;
+    private Long idpersonaggio;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nomeAttributiClasse")
-    private Classe nomeAttributiClasse;
+    @JoinColumn(name = "classe_idclasse")
+    private Classe idclasse;
 
     @Column
     private String nomePersonaggio;
+
+    @Column
+    private String classePersonaggio;
 
     @Column
     private int livelloPersonaggio;

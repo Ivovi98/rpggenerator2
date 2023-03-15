@@ -1,6 +1,6 @@
 package com.rpggenerator2.repository;
 
-import com.rpg.rpgGenerator.entity.Personaggio;
+import com.rpggenerator2.entity.Personaggio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

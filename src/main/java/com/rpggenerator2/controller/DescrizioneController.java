@@ -1,7 +1,7 @@
 package com.rpggenerator2.controller;
 
-import com.rpg.rpgGenerator.entity.Descrizione;
-import com.rpg.rpgGenerator.service.DescrizioneService;
+import com.rpggenerator2.entity.Descrizione;
+import com.rpggenerator2.service.DescrizioneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class DescrizioneController {
     private DescrizioneService descrizioneService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getDescrizioneById(@PathVariable String id) {
+    public ResponseEntity<?> getDescrizioneById(@PathVariable Long id) {
         Optional<Descrizione> descrizione = descrizioneService.findById(id);
         return descrizione.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -32,7 +32,7 @@ public class DescrizioneController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateDescrizione(@PathVariable String id, @RequestBody Descrizione descrizione) {
+    public ResponseEntity<?> updateDescrizione(@PathVariable Long id, @RequestBody Descrizione descrizione) {
         Optional<Descrizione> existingDescrizione = descrizioneService.findById(id);
         if (existingDescrizione.isPresent()) {
             Descrizione descrizioneToUpdate = existingDescrizione.get();
@@ -49,7 +49,7 @@ public class DescrizioneController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteDescrizione(@PathVariable String id) {
+    public ResponseEntity<?> deleteDescrizione(@PathVariable Long id) {
         Optional<Descrizione> descrizioneToDelete = descrizioneService.findById(id);
         if (descrizioneToDelete.isPresent()) {
             descrizioneService.delete(descrizioneToDelete.get());

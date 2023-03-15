@@ -19,13 +19,10 @@ import java.sql.Timestamp;
 public class Classe {
     @Id
     @Column(nullable = false)
+    private String idclasse;
+
+    @Column
     private String nomeAttributiClasse;
-
-    @Column
-    private String nomeClasse;
-
-    @Column
-    private String descrizioneClasse;
 
     @CreatedDate
     @Column

@@ -20,17 +20,17 @@ public class Abilita {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
+    private String idabilita;
+
+    @Column
     private String nomeAttributiAbilita;
 
     @Column
     private String nomeAbilita;
 
-    @Column
-    private String descrizioneAbilita;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nomeAttributiClasse")
-    private Classe nomeAttributiClasse;
+    @JoinColumn(name = "idlasse")
+    private Classe idlasse;
 
     @CreatedDate
     @Column

@@ -16,30 +16,34 @@ import java.sql.Timestamp;
 public class Categoria {
    @Id
    @Column(nullable = false)
+   private String idcategoria;
+
+   @Column
    private String nomeAttributiCategoria;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "descrizione")
-    private Descrizione descrizione;
 
-    @CreatedDate
-    @Column
-    private Timestamp dataCreazione;
+   @OneToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "iddescrizione")
+   private Descrizione iddescrizione;
 
-    @LastModifiedDate
-    @Column
-    private Timestamp dataUltimaModifica;
+   @CreatedDate
+   @Column
+   private Timestamp dataCreazione;
 
-    @Version
-    @Column
-    private int versione;
+   @LastModifiedDate
+   @Column
+   private Timestamp dataUltimaModifica;
 
-    public Object getNomeAttributiCategoria() {
-        Object o = null;
-        return o;
-    }
+   @Version
+   @Column
+   private int versione;
 
-    public void setNomeAttributiCategoria(Object nomeAttributiCategoria) {
+   public Object getNomeAttributiCategoria() {
+       Object o = null;
+       return o;
+   }
 
-    }
+   public void setNomeAttributiCategoria(Object nomeAttributiCategoria) {
+
+   }
 }

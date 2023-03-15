@@ -1,7 +1,7 @@
 package com.rpggenerator2.controller;
 
-import com.rpg.rpgGenerator.entity.Categoria;
-import com.rpg.rpgGenerator.service.CategoriaService;
+import com.rpggenerator2.entity.Categoria;
+import com.rpggenerator2.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categoria> findById(@PathVariable Enum id) {
+    public ResponseEntity<Categoria> findById(@PathVariable Long id) {
         Optional<Categoria> categoria = categoriaService.findById(id);
         if (categoria.isPresent()) {
             return ResponseEntity.ok(categoria.get());
@@ -39,7 +39,7 @@ public class CategoriaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Categoria> updateCategoria(@PathVariable Enum id, @RequestBody Categoria categoria) {
+    public ResponseEntity<Categoria> updateCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
         Optional<Categoria> existingCategoria = categoriaService.findById(id);
         if (existingCategoria.isPresent()) {
             categoria.setNomeAttributiCategoria(existingCategoria.get().getNomeAttributiCategoria());
@@ -51,7 +51,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategoria(@PathVariable Enum id) {
+    public ResponseEntity<Void> deleteCategoria(@PathVariable Long id) {
         Optional<Categoria> categoria = categoriaService.findById(id);
         if (categoria.isPresent()) {
             categoriaService.delete(categoria.get());

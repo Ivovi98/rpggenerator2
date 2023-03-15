@@ -1,7 +1,7 @@
 package com.rpggenerator2.controller;
 
-import com.rpg.rpgGenerator.entity.Classe;
-import com.rpg.rpgGenerator.service.ClasseService;
+import com.rpggenerator2.entity.Classe;
+import com.rpggenerator2.service.ClasseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class ClasseController {
     private ClasseService classeService;
 
     @GetMapping("/{id}") //READ GET BY ID
-    public ResponseEntity<Classe> getClasseById(@PathVariable String id){
+    public ResponseEntity<Classe> getClasseById(@PathVariable Long id){
         Optional<Classe> existingClasse = classeService.findById(id);
         try {
             if(existingClasse.isPresent()){
@@ -51,7 +51,7 @@ public class ClasseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateClasse(@PathVariable String id, @RequestBody Classe classe) {
+    public ResponseEntity<?> updateClasse(@PathVariable Long id, @RequestBody Classe classe) {
         Optional<Classe> existingClasse = classeService.findById(id);
         if (existingClasse.isPresent()) {
             classe.setId(id);
@@ -63,7 +63,7 @@ public class ClasseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteClasse(@PathVariable String id) {
+    public ResponseEntity<?> deleteClasse(@PathVariable Long id) {
         Optional<Classe> existingClasse = classeService.findById(id);
         if (existingClasse.isPresent()) {
             classeService.delete(existingClasse.get());

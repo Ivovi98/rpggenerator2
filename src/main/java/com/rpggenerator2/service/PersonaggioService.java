@@ -1,11 +1,10 @@
 package  com.rpggenerator2.service;
 
-import com.rpg.rpgGenerator.entity.Personaggio;
-import com.rpg.rpgGenerator.repository.PersonaggioRepository;
+import com.rpggenerator2.entity.Personaggio;
+import com.rpggenerator2.repository.PersonaggioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
-import java.util.List;
 
 @Service
 public class PersonaggioService {

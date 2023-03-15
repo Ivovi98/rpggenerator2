@@ -1,7 +1,7 @@
 package com.rpggenerator2.controller;
 
-import com.rpg.rpgGenerator.entity.Abilita;
-import com.rpg.rpgGenerator.service.AbilitaService;
+import com.rpggenerator2.entity.Abilita;
+import com.rpggenerator2.service.AbilitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

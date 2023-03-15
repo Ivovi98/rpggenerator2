@@ -18,17 +18,14 @@ import java.sql.Timestamp;
 public class Descrizione {
     @Id
     @Column(nullable = false)
+    private String iddescrizione;
+
+    @Column
     private String descrizione;
 
-    @Column
-    private String descrizioneClasse;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nomeAttributiAbilita")
-    private Abilita nomeAttributiAbilita;
-
-    @Column
-    private String categoriaDescrizione;
+    @JoinColumn(name = "idabilita")
+    private Abilita idabilita;
 
     @CreatedDate
     @Column

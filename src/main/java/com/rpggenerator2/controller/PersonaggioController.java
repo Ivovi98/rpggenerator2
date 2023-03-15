@@ -1,7 +1,7 @@
 package com.rpggenerator2.controller;
 
-import com.rpg.rpgGenerator.entity.Personaggio;
-import com.rpg.rpgGenerator.service.PersonaggioService;
+import com.rpggenerator2.entity.Personaggio;
+import com.rpggenerator2.service.PersonaggioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
