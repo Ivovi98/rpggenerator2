@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: rpggenerator2
 -- ------------------------------------------------------
--- Server version	8.0.30
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -142,6 +142,7 @@ CREATE TABLE `personaggio` (
   `data_creazione` datetime DEFAULT NULL,
   `data_ultima_modifica` datetime DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
+  `classe` varchar(45) DEFAULT NULL,
   `livello` int DEFAULT NULL,
   `intellij` int DEFAULT NULL,
   `forza` int DEFAULT NULL,
@@ -171,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-15 20:36:04
+-- Dump completed on 2023-03-16  9:28:10
