@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 @Entity
 public class Abilita {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
 

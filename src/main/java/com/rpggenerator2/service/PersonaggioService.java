@@ -26,11 +26,6 @@ public class PersonaggioService {
         return personaggioRepository.findById(id);
     }
 
-    public Personaggio insertPersonaggio(Personaggio p) {
-        return personaggioRepository.save(p);
-
-    }
-
     public Personaggio save(Personaggio p) {
         return personaggioRepository.save(p);
     }

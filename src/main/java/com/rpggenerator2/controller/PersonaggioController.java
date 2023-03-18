@@ -30,17 +30,47 @@ public class PersonaggioController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PostMapping
+    public ResponseEntity<?> createPersonaggio(@RequestBody Personaggio personaggio) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        personaggio.setDataCreazione(timestamp);
+        personaggioService.save(personaggio);
+        return new ResponseEntity<>(personaggio, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updatePersonaggio(@PathVariable Long id, @RequestBody Personaggio personaggio) {
+        Optional<Personaggio> personaggioOptional = personaggioService.findById(id);
+        if (!personaggioOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
+        }
+        personaggio.setId(id);
+        personaggioService.save(personaggio);
+        return new ResponseEntity<>(personaggio, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePersonaggio(@PathVariable Personaggio p) {
+        Optional<Personaggio> personaggio = personaggioService.findById(p.getId());
+        if (!personaggio.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        personaggioService.delete(p);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+}
+    /*
 
     @PostMapping //CREATE
     public ResponseEntity<Personaggio> insertPersonaggioPersonaggio(@RequestBody Personaggio personaggio){
         try {
             Personaggio p = personaggioService.insertPersonaggio(personaggio);
             if(p == null){
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT); //204
             }
             return new ResponseEntity<>(p, HttpStatus.CREATED); //201
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); //500
         }
     }
 
@@ -81,4 +111,4 @@ public class PersonaggioController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-}
+    */
