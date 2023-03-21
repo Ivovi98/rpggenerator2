@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -26,9 +25,18 @@ public class DescrizioneController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createDescrizione(@RequestBody Descrizione descrizione) {
-        Descrizione createdDescrizione = descrizioneService.insertDescrizione(descrizione);
-        return new ResponseEntity<>(createdDescrizione, HttpStatus.CREATED);
+    public ResponseEntity<Descrizione> createDescrizione(@RequestBody Descrizione descrizione) {
+        try {
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            descrizione.setDataCreazione(timestamp);
+            Descrizione d = descrizioneService.save(descrizione); //APPOGGINO
+            if(d == null) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(d, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")

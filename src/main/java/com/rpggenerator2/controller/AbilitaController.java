@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @RestController
@@ -41,8 +42,18 @@ public class AbilitaController {
     }
 
     @PostMapping
-    public Abilita create(@RequestBody Abilita abilita) {
-        return abilitaService.save(abilita);
+    public ResponseEntity<Abilita> create(@RequestBody Abilita abilita) {
+        try {
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            abilita.setDataCreazione(timestamp);
+            Abilita a = abilitaService.save(abilita); //APPOGGINO
+            if(a == null) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(a, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")

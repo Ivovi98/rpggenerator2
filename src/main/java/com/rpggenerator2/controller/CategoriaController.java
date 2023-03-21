@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +29,17 @@ public class CategoriaController {
 
     @PostMapping
     public ResponseEntity<Categoria> insertCategoria(@RequestBody Categoria categoria) {
-        Categoria savedCategoria = categoriaService.insertCategoria(categoria);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedCategoria);
+        try {
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            categoria.setDataCreazione(timestamp);
+            Categoria c = categoriaService.save(categoria); //APPOGGINO
+            if(c == null) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(c, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")

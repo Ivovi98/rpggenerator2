@@ -42,10 +42,17 @@ public class PersonaggioController {
     */
     @PostMapping
     public ResponseEntity<Personaggio> createPersonaggio(@RequestBody Personaggio personaggio) {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        personaggio.setDataCreazione(timestamp);
-        personaggioService.save(personaggio);
-        return new ResponseEntity<>(personaggio, HttpStatus.CREATED);
+        try {
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            personaggio.setDataCreazione(timestamp);
+            Personaggio p = personaggioService.save(personaggio); //APPOGGINO
+            if(p == null) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(p, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")
