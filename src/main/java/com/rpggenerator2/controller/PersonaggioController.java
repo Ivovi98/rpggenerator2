@@ -30,8 +30,18 @@ public class PersonaggioController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    /*
+    @PostMapping //provare magari con param anziché request body per classe
+    public ResponseEntity<Personaggio> createrPersonaggio(@RequestBody Personaggio personaggio, Classe classe) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        personaggio.setDataCreazione(timestamp);
+        //personaggiolsetClasse(classe);
+        personaggioService.save(personaggio);
+        return new ResponseEntity<>(personaggio, HttpStatus.CREATED);
+    }
+    */
     @PostMapping
-    public ResponseEntity<?> createPersonaggio(@RequestBody Personaggio personaggio) {
+    public ResponseEntity<Personaggio> createPersonaggio(@RequestBody Personaggio personaggio) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         personaggio.setDataCreazione(timestamp);
         personaggioService.save(personaggio);
@@ -39,14 +49,24 @@ public class PersonaggioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updatePersonaggio(@PathVariable Long id, @RequestBody Personaggio personaggio) {
-        Optional<Personaggio> personaggioOptional = personaggioService.findById(id);
-        if (!personaggioOptional.isPresent()) {
+    public ResponseEntity<Personaggio> updatePersonaggio(@PathVariable Long id, @RequestBody Personaggio personaggio) {
+        Optional<Personaggio> existingPersonaggio = personaggioService.findById(id);
+
+        if (!existingPersonaggio.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
+        } else {
+            Personaggio personaggioDiAppoggio = existingPersonaggio.get();
+            personaggioDiAppoggio.setForza(personaggio.getForza());
+            personaggioDiAppoggio.setIntellij(personaggio.getIntellij());
+            personaggioDiAppoggio.setLivello(personaggio.getLivello());
+            personaggioDiAppoggio.setNome(personaggio.getNome());
+            personaggioDiAppoggio.setSalute(personaggio.getSalute());
+            personaggioDiAppoggio.setClasse(personaggio.getClasse());
+            personaggioDiAppoggio.setVersione(personaggio.getVersione());
+            personaggioDiAppoggio.setDataUltimaModifica(personaggio.getDataUltimaModifica());
+            Personaggio personaggioAggiornato = personaggioService.save(personaggioDiAppoggio);
+            return new ResponseEntity<>(personaggioAggiornato, HttpStatus.OK);
         }
-        personaggio.setId(id);
-        personaggioService.save(personaggio);
-        return new ResponseEntity<>(personaggio, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

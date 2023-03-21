@@ -12,8 +12,8 @@ public class DescrizioneService {
     @Autowired
     private DescrizioneRepository descrizioneRepository;
 
-    public Optional<Descrizione> findByIdAbilita(Long idabilita) {
-        return descrizioneRepository.findByAbilitaId(idabilita);
+    public Optional<Descrizione> findById(Long id) {
+        return descrizioneRepository.findByAbilitaId(id);
     }
 
     public Descrizione insertDescrizione(Descrizione d) {

@@ -36,12 +36,17 @@ public class CategoriaController {
     @PutMapping("/{id}")
     public ResponseEntity<Categoria> updateCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
         Optional<Categoria> existingCategoria = categoriaService.findById(id);
-        if (existingCategoria.isPresent()) {
-            categoria.setNomeAttributiCategoria(existingCategoria.get().getNomeAttributiCategoria());
-            Categoria savedCategoria = categoriaService.save(categoria);
-            return ResponseEntity.ok(savedCategoria);
+
+        if (!existingCategoria.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
         } else {
-            return ResponseEntity.notFound().build();
+            Categoria categoriaDiAppoggio = existingCategoria.get();
+            categoriaDiAppoggio.setNomeAttributiCategoria(categoria.getNomeAttributiCategoria());
+            categoriaDiAppoggio.setDescrizione(categoria.getDescrizione());
+            categoriaDiAppoggio.setVersione(categoria.getVersione());
+            categoriaDiAppoggio.setDataUltimaModifica(categoria.getDataUltimaModifica());
+            Categoria categoriaAggiornata = categoriaService.save(categoriaDiAppoggio);
+            return new ResponseEntity<>(categoriaAggiornata, HttpStatus.OK);
         }
     }
 

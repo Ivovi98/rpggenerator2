@@ -20,7 +20,7 @@ public class DescrizioneController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getDescrizioneById(@PathVariable Long id) {
-        Optional<Descrizione> descrizione = descrizioneService.findByIdAbilita(id);
+        Optional<Descrizione> descrizione = descrizioneService.findById(id);
         return descrizione.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -32,23 +32,25 @@ public class DescrizioneController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateDescrizione(@PathVariable Long id, @RequestBody Descrizione descrizione) {
-        Optional<Descrizione> existingDescrizione = descrizioneService.findByIdAbilita(id);
-        if (existingDescrizione.isPresent()) {
-            Descrizione descrizioneToUpdate = existingDescrizione.get();
-            descrizioneToUpdate.setDescrizione(descrizione.getDescrizione());
-            descrizioneToUpdate.setDescrizione(descrizione.getDescrizione());
-            descrizioneToUpdate.setDataUltimaModifica(new Timestamp(System.currentTimeMillis()));
-            Descrizione updatedDescrizione = descrizioneService.save(descrizioneToUpdate);
-            return new ResponseEntity<>(updatedDescrizione, HttpStatus.OK);
+    public ResponseEntity<Descrizione> updateDescrizione(@PathVariable Long id, @RequestBody Descrizione descrizione) {
+        Optional<Descrizione> existingDescrizione = descrizioneService.findById(id);
+
+        if (!existingDescrizione.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            Descrizione descrizioneDiAppoggio = existingDescrizione.get();
+            descrizioneDiAppoggio.setDescrizione(descrizione.getDescrizione());
+            descrizioneDiAppoggio.setAbilita(descrizione.getAbilita());
+            descrizioneDiAppoggio.setVersione(descrizione.getVersione());
+            descrizioneDiAppoggio.setDataUltimaModifica(descrizione.getDataUltimaModifica());
+            Descrizione descrizioneAggiornata = descrizioneService.save(descrizioneDiAppoggio);
+            return new ResponseEntity<>(descrizioneAggiornata, HttpStatus.OK);
         }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDescrizione(@PathVariable Long id) {
-        Optional<Descrizione> descrizioneToDelete = descrizioneService.findByIdAbilita(id);
+        Optional<Descrizione> descrizioneToDelete = descrizioneService.findById(id);
         if (descrizioneToDelete.isPresent()) {
             descrizioneService.delete(descrizioneToDelete.get());
             return new ResponseEntity<>(HttpStatus.OK);

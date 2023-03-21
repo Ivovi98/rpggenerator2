@@ -40,14 +40,18 @@ public class ClasseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateClasse(@PathVariable Long id, @RequestBody Classe classe) {
+    public ResponseEntity<Classe> updateClasse(@PathVariable Long id, @RequestBody Classe classe) {
         Optional<Classe> existingClasse = classeService.findById(id);
-        if (existingClasse.isPresent()) {
-            classe.setId(id);
-            Classe updatedClasse = classeService.save(classe);
-            return new ResponseEntity<>(updatedClasse, HttpStatus.OK);
+
+        if (!existingClasse.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            Classe classeDiAppoggio = existingClasse.get();
+            classeDiAppoggio.setNomeAttributiClasse(classe.getNomeAttributiClasse());
+            classeDiAppoggio.setVersione(classe.getVersione());
+            classeDiAppoggio.setDataUltimaModifica(classe.getDataUltimaModifica());
+            Classe classeAggiornata = classeService.save(classeDiAppoggio);
+            return new ResponseEntity<>(classeAggiornata, HttpStatus.OK);
         }
     }
 

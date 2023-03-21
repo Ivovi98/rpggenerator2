@@ -1,11 +1,9 @@
 package com.rpggenerator2.entity;
 
-
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -36,7 +34,4 @@ public class Classe {
     @Version
     @Column
     private int versione;
-
-    public void setId(Long id) {
-    }
 }
